@@ -1,7 +1,9 @@
 .album
 {
     display: inline-block;
-    margin-right: 10px;
+    margin: 5px 10px;
+    position: relative;
+    cursor: pointer;
 }
 
 .album img:hover
@@ -20,9 +22,15 @@
     opacity: .7;
 }
 
-.album_content_empty:before
+.album_content_empty:hover:before
 {
     content: 'Альбом пустой';
     position: absolute;
-    top: 50%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, .7);
+    text-align: center;
+    line-height: 2em;
 }

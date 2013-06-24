@@ -14,7 +14,6 @@
         {
             block: 'header',
             content: [
-                'header content goes here'
             ]
         },
         {
@@ -64,10 +63,10 @@
         {
             block: 'footer',
             content: [
-                'footer content goes here'
             ]
         },
         { block: 'i-jquery', mods: { version: '1.8.3' } },
-        { elem: 'js', url: '_index.js' }
+        { elem: 'js', url: '_index.js' },
+        { elem: 'js', url: '../../desktop.blocks/i-exif/i-exif.js' }
     ]
 })

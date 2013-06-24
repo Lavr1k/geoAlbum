@@ -15,7 +15,6 @@ BEM.DOM.decl('gallery', {
             $(document).on('keyup', function(e) {
                 if (e.keyCode == 27) {
                     that.hide();
-                    that.findBlockOutside('content').findBlockInside('album').delMod('current');
                 }
             });
 
@@ -91,7 +90,7 @@ BEM.DOM.decl('gallery', {
         this.spinner = this.findBlockInside('spinner');
         this.photoInner = this.findElem('full-photo-inner');
 
-        console.log( this.fullPhoto );
+        console.log( target );
 
         this.isPhotoShowed = true;
 
@@ -99,7 +98,11 @@ BEM.DOM.decl('gallery', {
             BEMHTML.apply({
                 block: 'gallery',
                 elem: 'full-photo-image',
-                tag: 'img'
+                tag: 'img',
+                attrs: {
+                    exif: 'true',
+                    src: target.attr('data-full-image')
+                }
             })
         );
 
@@ -108,43 +111,68 @@ BEM.DOM.decl('gallery', {
         this.setMod(this.fullPhoto, 'visibility', 'visible');
         this.spinner.setMod('visibility', 'visible');
 
+        var cl = {
+            left: target.offset().left + 'px',
+            top: target.offset().top + 'px',
+            height: target.height() + 'px',
+            width: target.width() + 'px'
+        };
+
+        console.log(cl);
+
         this.fullPhoto
             .css({
-                '-webkit-transition': 'none',
                 left: target.offset().left + 'px',
                 top: target.offset().top + 'px',
                 height: target.height() + 'px',
                 width: target.width() + 'px'
             });
+
         // анимируем
-        this.fullPhoto
-            .css({
-                width: '100%',
-                height: '100%',
-                top: 0,
-                left: 0,
+        setTimeout(function() {
+            that.fullPhoto.css({
                 'background-color': 'rgba(255,255,255,.8)',
                 '-webkit-transform': 'translatez(0)',
-                '-webkit-transition': 'all .3s ease-out'
-            })
-            .one('webkitTransitionEnd', function() {
-                that.fullPhoto.css({
-                    '-webkit-transition': 'none'
+                '-webkit-transition': 'height, width, opacity, .3s ease-out'
+            });
+        }, 0);
+
+        setTimeout(function() {
+            that.fullPhoto.css({
+                height: window.innerHeight + 'px',
+                width: window.innerWidth + 'px',
+                top: 0,
+                left: 0
+            });
+        }, 0);
+
+        that.fullPhoto.one('webkitTransitionEnd', function() {
+            console.log( 'translatez' );
+
+            that.fullPhoto.css({
+                '-webkit-transition': 'none',
+                width: '100%',
+                height: '100%'
+            });
+
+            that._onResize();
+
+            // Выставление картики
+            that.fullImage[0].complete
+                ? that.onImageLoad()
+                : that.fullImage.on('load', function() {
+                    that.onImageLoad();
                 });
 
-                that._onResize();
+        });
+    },
 
-                // Выставление картики
-                that.fullImage
-                    .attr('src', target.attr('data-full-image'))
-                    .on('load', function() {
-                        setTimeout(function() {
-                            that.setMod(that.fullImage, 'visibility', 'visible');
-                            that.spinner.setMod('visibility', 'hidden');
-                        }, 300);
-                    });
-
-            });
+    onImageLoad: function() {
+        var that = this;
+        setTimeout(function() {
+            that.setMod(that.fullImage, 'visibility', 'visible');
+            that.spinner.setMod('visibility', 'hidden');
+        }, 300);
     },
 
     clearContent: function() {
@@ -168,8 +196,9 @@ BEM.DOM.decl('gallery', {
             this.isPhotoShowed = false;
             this.fullImage.remove();
         } else {
-            console.log( 'gallery' );
+            console.log( this.findBlockOutside('content').findBlockInside('album') );
             this.setMod('visibility', 'hidden');
+            this.findBlockOutside('content').findBlockInside({ block: 'album', modName: 'current', modVal: 'true'} ).delMod('current');
             this.unbindPhoto();
         }
     },

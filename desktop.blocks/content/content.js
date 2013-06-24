@@ -3,15 +3,13 @@ BEM.DOM.decl('content', {
         js: function() {
 
             this.params.username = 'aig1001';    // Заглушка пока не приходят параметры
-            this.params.username && this.getAlbums();
+            location.href.split('#')[1] && this.getAlbums();
 
             location.href.split('#')[1] && this.parseParams();
 
             this.params.access_token && this.getUserInfo();
 
             this.params.state == 'accessed' && this.findBlockInside('greeting').setMod('visibility','hidden');
-
-            console.log( this.params );
 
         }
     },
@@ -36,11 +34,11 @@ BEM.DOM.decl('content', {
             + this.params.access_token
             + '&callback=?';
 
-        $.getJSON(url,
-            function(data) {
-                console.log( data );
-            }
-        );
+        // $.getJSON(url,
+        //     function(data) {
+        //         console.log( data );
+        //     }
+        // );
 
     },
 
@@ -61,6 +59,7 @@ BEM.DOM.decl('content', {
         var content = [];
 
         for(key in this.albums.entries) {
+            console.log( this.albums.entries[key] );
             var album = this.albums.entries[key];
 
             content.push(
@@ -75,10 +74,13 @@ BEM.DOM.decl('content', {
                         content: [
                             {
                                 elem: 'cover',
-                                tag: 'img',
                                 attrs: {
-                                    src: album.img.S.href,
+                                    style: 'background-image: url(' + album.img.S.href + ')'
                                 }
+                            },
+                            {
+                                elem: 'description',
+                                content: album.title
                             },
                             {
                                 block: 'spinner',
