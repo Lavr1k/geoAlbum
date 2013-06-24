@@ -1,0 +1,5 @@
+.gallery__full-photo-inner
+{
+    display: table-cell;
+    vertical-align: middle;
+}

@@ -1,6 +1,22 @@
 BEM.DOM.decl('album',{
 
-    _getPhotos: function() {
+    onInit: function() {
+
+        var that = this;
+
+        this.gallery = this.findBlockOutside('content').findBlockInside('gallery');
+        this.album = this.findBlockInside('album');
+        this.spinner = this.findBlockInside('spinner');
+        this._fistRun = true;
+
+        this.url = this.domElem.attr('photos') + '&callback=?&limit=30' ;
+        this.getPhotos();
+        this.spinner.setMod('visibility', 'visible');
+        this.album.setMod('current', 'true');
+
+    },
+
+    getPhotos: function() {
 
         var that = this;
 
@@ -17,12 +33,12 @@ BEM.DOM.decl('album',{
 
                 that.url = data.links.next + '&limit=30&callback=?';
 
-                that._getPhotos();
+                that.getPhotos();
 
             } else {
                 that.spinner.setMod('visibility', 'hidden');
                 if (that.entries != 0) {
-                    that.gallery.trigger('show', that.entries)
+                    that.gallery.trigger('show', that.entries);
                 } else {
                     that.setMod('content', 'empty');
                     that.onEsc();
@@ -33,30 +49,14 @@ BEM.DOM.decl('album',{
     },
 
     onEsc: function() {
-        this.gallery.trigger('hide', this.entries);
+        this.gallery.trigger('hide');
         this.album.delMod('current');
     },
 },
 {
     live: function() {
         this.liveBindTo('click', function() {
-
-            var that = this;
-
-            $(document).keyup(function(e) {
-                (e = 27) && that.onEsc();
-            });
-
-            this.gallery = this.findBlockOutside('content').findBlockInside('gallery')
-            this.album = this.findBlockInside('album');
-            this.spinner = this.findBlockInside('spinner');
-            this._fistRun = true;
-
-            this.url = this.domElem.attr('photos') + '&callback=?&limit=30' ;
-            this._getPhotos();
-            this.spinner.setMod('visibility', 'visible');
-            this.album.setMod('current', 'true');
-
+            this.onInit();
         });
     }
 });

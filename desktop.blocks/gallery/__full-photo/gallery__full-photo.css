@@ -1,9 +1,35 @@
+.gallery__full-photo
+{
+    position: absolute;
+    background-color: rgba(255,255,255,0);
+    z-index: 2;
+    text-align: center;
+    overflow: hidden;
+    max-height: 100%;
+    max-width: 100%;
+}
+
 .gallery__full-photo_visibility_visible
 {
     display: block;
 }
 
-..gallery__full-photo_visibility_hidden
+.gallery__full-photo_visibility_hidden
 {
     display: none;
+}
+
+
+.gallery__full-photo-image
+{
+    max-height: 100%;
+    max-width: 100%;
+    opacity: 0;
+    -webkit-transform: translatez(0);
+    -webkit-transition: all .3s ease-out;
+}
+
+.gallery__full-photo-image_visibility_visible
+{
+    opacity: 1;
 }

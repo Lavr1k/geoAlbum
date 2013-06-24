@@ -3,11 +3,11 @@ BEM.DOM.decl('content', {
         js: function() {
 
             this.params.username = 'aig1001';    // Заглушка пока не приходят параметры
-            this.params.username && this._getAlbums();
+            this.params.username && this.getAlbums();
 
-            location.href.split('#')[1] && this._parseParams();
+            location.href.split('#')[1] && this.parseParams();
 
-            this.params.access_token && this._getUserInfo();
+            this.params.access_token && this.getUserInfo();
 
             this.params.state == 'accessed' && this.findBlockInside('greeting').setMod('visibility','hidden');
 
@@ -16,7 +16,7 @@ BEM.DOM.decl('content', {
         }
     },
 
-    _parseParams: function() {
+    parseParams: function() {
 
         var get = location.href.split('#')[1].split('&') ;
 
@@ -31,7 +31,7 @@ BEM.DOM.decl('content', {
 
     },
 
-    _getUserInfo: function() {
+    getUserInfo: function() {
         var url = 'https://login.yandex.ru/info?format=json&oauth_token='
             + this.params.access_token
             + '&callback=?';
@@ -44,7 +44,7 @@ BEM.DOM.decl('content', {
 
     },
 
-    _getAlbums: function() {
+    getAlbums: function() {
         var that = this,
             url = 'http://api-fotki.yandex.ru/api/users/'
                 + this.params.username

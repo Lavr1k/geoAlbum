@@ -2,6 +2,7 @@
     block: 'b-page',
     title: 'Title of the page',
     favicon: '/favicon.ico',
+    js: true,
     head: [
         { elem: 'js', url: '_index.bemhtml.js' },
         { elem: 'css', url: '_index.css', ie: false },
@@ -44,10 +45,18 @@
                     mods: { visibility: 'hidden' },
                     content: {
                         elem: 'full-photo',
-                        content: {
-                            elem: 'full-photo-image',
-                            tag: 'img'
-                        }
+                        content: [
+                            {
+                                block: 'spinner',
+                                mods: {
+                                    visibility: 'hidden',
+                                    theme: 'blue'
+                                }
+                            },
+                            {
+                                elem: 'full-photo-inner'
+                            }
+                        ]
                     }
                 }
             ]
