@@ -1,0 +1,9 @@
+.gallery__full-photo_visibility_visible
+{
+    display: block;
+}
+
+..gallery__full-photo_visibility_hidden
+{
+    display: none;
+}

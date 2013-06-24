@@ -1,0 +1,28 @@
+.album
+{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.album img:hover
+{
+    opacity: .9;
+    cursor: pointer;
+}
+
+.album_current_true img
+{
+    opacity: .7;
+}
+
+.album_current_true img:hover
+{
+    opacity: .7;
+}
+
+.album_content_empty:before
+{
+    content: 'Альбом пустой';
+    position: absolute;
+    top: 50%;
+}
