@@ -1,0 +1,11 @@
+.greeting__link
+{
+    text-align: center;
+}
+
+.greeting__button
+{
+    font-size: 22px;
+    text-decoration: none;
+    color: blue;
+}

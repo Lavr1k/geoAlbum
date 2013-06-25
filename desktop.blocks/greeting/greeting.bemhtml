@@ -1,4 +1,4 @@
-block greeting, elem link {
+block greeting, elem button {
     tag: 'a',
     attrs: {
         href: this.ctx.url

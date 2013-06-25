@@ -3,6 +3,7 @@ BEM.DOM.decl('gallery', {
         js: function() {
             var that = this;
 
+            // для проверки наличия контента и геолокационных данны
             this.hasContent = false;
             this.hasGeoData = false;
 
@@ -27,6 +28,24 @@ BEM.DOM.decl('gallery', {
 
         var content = [],
             that = this;
+
+        this.findElem('title').html(
+            'Альбом ' + this.findBlockOutside('content')
+                .findBlockInside({ block: 'album', modName: 'current', modVal: 'true'})
+                .findElem('cover')
+                .attr('data-title')
+        );
+
+        console.log( {
+            block: 'gallery',
+            elem: 'title',
+            content: 'Альбом ' + this.findBlockOutside('content')
+                .findBlockInside({ block: 'album', modName: 'current', modVal: 'true'})
+                .findElem('cover')
+                .attr('data-title')
+        } );
+
+        console.log( this.entries );
 
         content = this.entries.map(function(item) {
 
@@ -154,7 +173,7 @@ BEM.DOM.decl('gallery', {
 
             that.fullPhoto.css({
                 'background-color': 'rgba(255,255,255,.8)',
-                '-webkit-transform': 'translatez(0)',
+                '-webkit-transform': 'translateZ(0)',
                 '-webkit-transition': 'height, width, opacity, .3s ease-out'
             });
 

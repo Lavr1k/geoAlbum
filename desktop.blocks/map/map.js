@@ -27,7 +27,7 @@ BEM.DOM.decl('map',{
                 // Центр карты
                 center: [that.geo.latitude, that.geo.longitude],
                 // Коэффициент масштабирования
-                zoom: 15,
+                zoom: 10,
                 // Тип карты
                 type: 'yandex#map'
             });
@@ -42,10 +42,6 @@ BEM.DOM.decl('map',{
                 /* Свойства балуна:
                    - контент балуна */
                 content: that.description
-            }, {
-                /* Опции балуна:
-                   - балун имеет копку закрытия */
-                closeButton: true
             }
         );
 

@@ -2,7 +2,7 @@ BEM.DOM.decl('content', {
     onSetMod: {
         js: function() {
 
-            this.params.username = 'geoAlbumTest';    // Заглушка пока не приходят параметры
+            this.params.username = 'aig1001';    // Заглушка пока не приходят параметры
 
             location.href.split('#')[1] && this.getAlbums();
             location.href.split('#')[1] && this.parseParams();
@@ -61,7 +61,11 @@ BEM.DOM.decl('content', {
 
     drawAlbums: function() {
 
-        var content = [];
+        var content = [{
+            block: 'album',
+            elem: 'title',
+            content: 'Альбомы пользователя ' + this.params.username
+        }];
 
         for(key in this.albums.entries) {
 
@@ -80,7 +84,8 @@ BEM.DOM.decl('content', {
                             {
                                 elem: 'cover',
                                 attrs: {
-                                    style: 'background-image: url(' + album.img.S.href + ')'
+                                    style: 'background-image: url(' + album.img.S.href + ')',
+                                    'data-title': album.title
                                 }
                             },
                             {
