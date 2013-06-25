@@ -2,9 +2,9 @@ BEM.DOM.decl('content', {
     onSetMod: {
         js: function() {
 
-            this.params.username = 'aig1001';    // Заглушка пока не приходят параметры
-            location.href.split('#')[1] && this.getAlbums();
+            this.params.username = 'geoAlbumTest';    // Заглушка пока не приходят параметры
 
+            location.href.split('#')[1] && this.getAlbums();
             location.href.split('#')[1] && this.parseParams();
 
             this.params.access_token && this.getUserInfo();
@@ -30,6 +30,7 @@ BEM.DOM.decl('content', {
     },
 
     getUserInfo: function() {
+
         var url = 'https://login.yandex.ru/info?format=json&oauth_token='
             + this.params.access_token
             + '&callback=?';
@@ -43,15 +44,19 @@ BEM.DOM.decl('content', {
     },
 
     getAlbums: function() {
+
         var that = this,
             url = 'http://api-fotki.yandex.ru/api/users/'
                 + this.params.username
                 + '/albums/?format=json&callback=?';
 
         $.getJSON(url, function(data) {
+
             that.albums = data;
             that.drawAlbums();
+
         });
+
     },
 
     drawAlbums: function() {
@@ -59,7 +64,7 @@ BEM.DOM.decl('content', {
         var content = [];
 
         for(key in this.albums.entries) {
-            console.log( this.albums.entries[key] );
+
             var album = this.albums.entries[key];
 
             content.push(

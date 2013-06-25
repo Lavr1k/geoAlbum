@@ -3,12 +3,3 @@
     position: relative;
     overflow: hidden;
 }
-
-.album__cover
-{
-    width: 145px;
-    height: 145px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}

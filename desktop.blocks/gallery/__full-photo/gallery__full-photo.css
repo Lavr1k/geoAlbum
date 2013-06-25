@@ -1,11 +1,11 @@
 .gallery__full-photo
 {
     position: fixed;
-    background-color: rgba(255,255,255,0);
-    z-index: 2;
-    text-align: center;
-    max-height: 100%;
+    z-index: 30;
     max-width: 100%;
+    max-height: 100%;
+    text-align: center;
+    background-color: rgba(255,255,255,0);
 }
 
 .gallery__full-photo_visibility_visible
@@ -22,8 +22,8 @@
 
 .gallery__full-photo-image
 {
-    max-height: 100%;
     max-width: 100%;
+    max-height: 100%;
     opacity: 0;
     -webkit-transform: translatez(0);
     -webkit-transition: all .3s ease-out;

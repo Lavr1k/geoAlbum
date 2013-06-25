@@ -1,3 +1,3 @@
 ({
-    shouldDeps: [{ block: 'album' }, { block: 'photos' }]
+    shouldDeps: { block: 'album' }
 })

@@ -2,5 +2,6 @@
     shouldDeps: [
         { block: 'spinner' },
         { block: 'gallery' },
-        { elems: ['inner', 'description'] }]
+        { elems: ['inner', 'description', 'cover'] }
+    ]
 })

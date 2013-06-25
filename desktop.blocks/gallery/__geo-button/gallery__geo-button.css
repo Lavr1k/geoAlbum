@@ -1,0 +1,20 @@
+.gallery__geo-button
+{
+    position: absolute;
+    z-index: 31;
+    bottom: 0;
+    left: 50%;
+    display: none;
+    margin-bottom: 10px;
+    margin-left: -71px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .7);
+    box-shadow: 0 0 3px 2px #777 inset;
+}
+
+.gallery__geo-button_visibility_visible
+{
+    display: block;
+}

@@ -1,0 +1,6 @@
+block map, elem map-content {
+    attrs: {
+        id: 'map',
+        style: 'width: 1002px; height: 600px;'
+    }
+}

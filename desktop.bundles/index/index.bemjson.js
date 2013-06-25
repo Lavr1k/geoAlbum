@@ -35,8 +35,7 @@
                     ]
                 },
                 {
-                    block: 'albums',
-                    js: true
+                    block: 'albums'
                 },
                 {
                     block: 'gallery',
@@ -54,6 +53,21 @@
                             },
                             {
                                 elem: 'full-photo-inner'
+                            },
+                            {
+                                block: 'map',
+                                content: [
+                                    {
+                                        elem: 'inner',
+                                        content: {
+                                            elem: 'map-content'
+                                        }
+                                    },
+                                    {
+                                        elem: 'destruct',
+                                        content: 'Удалить карту'
+                                    }
+                                ]
                             }
                         ]
                     }
@@ -67,6 +81,7 @@
         },
         { block: 'i-jquery', mods: { version: '1.8.3' } },
         { elem: 'js', url: '_index.js' },
-        { elem: 'js', url: '../../desktop.blocks/i-exif/i-exif.js' }
+        { elem: 'js', url: '../../desktop.blocks/i-exif/i-exif.js' },
+        { elem: 'js', url: 'http://api-maps.yandex.ru/2.0/?load=package.standard&mode=debug&lang=ru-RU' }
     ]
 })

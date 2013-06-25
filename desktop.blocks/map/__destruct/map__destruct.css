@@ -1,0 +1,13 @@
+.map__destruct
+{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-top: 10px;
+    margin-left: -50px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .7);
+    box-shadow: 0 0 3px 2px #777 inset;
+}

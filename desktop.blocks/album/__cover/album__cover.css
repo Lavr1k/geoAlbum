@@ -1,13 +1,4 @@
-.gallery__photo
-{
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-    margin: 5px 7px;
-    cursor: pointer;
-}
-
-.gallery__photo-cover
+.album__cover
 {
     width: 145px;
     height: 145px;
